@@ -35,7 +35,8 @@ set_global_assignment -entity "altera_pll_reconfig_top" -library "pll_cfg" -name
 set_global_assignment -entity "altera_pll_reconfig_top" -library "pll_cfg" -name IP_COMPONENT_PARAMETER "cmVjb25mX3dpZHRo::NjQ=::cmVjb25mX3dpZHRo"
 set_global_assignment -entity "altera_pll_reconfig_top" -library "pll_cfg" -name IP_COMPONENT_PARAMETER "V0FJVF9GT1JfTE9DSw==::dHJ1ZQ==::V0FJVF9GT1JfTE9DSw=="
 
-set_global_assignment -library "pll_cfg" -name VERILOG_FILE [file join $::quartus(qip_path) "pll_cfg.v"]
+set_global_assignment -library "pll_cfg" -name VERILOG_FILE [file join $::quartus(qip_path) "pll_cfg/pll_cfg.v"]
+set_global_assignment -library "pll_cfg" -name VERILOG_FILE [file join $::quartus(qip_path) "pll_cfg/pll_cfg_hdmi.v"]
 set_global_assignment -library "pll_cfg" -name VERILOG_FILE [file join $::quartus(qip_path) "pll_cfg/altera_pll_reconfig_top.v"]
 set_global_assignment -library "pll_cfg" -name VERILOG_FILE [file join $::quartus(qip_path) "pll_cfg/altera_pll_reconfig_core.v"]
 

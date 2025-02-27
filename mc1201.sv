@@ -28,7 +28,7 @@ module emu
 	input         RESET,
 
 	//Must be passed to hps_io module
-	inout  [45:0] HPS_BUS,
+	inout  [48:0] HPS_BUS,
 
 	//Base video clock. Usually equals to CLK_SYS.
 	output        CLK_VIDEO,
@@ -51,10 +51,13 @@ module emu
 	output        VGA_F1,
 	output [1:0]  VGA_SL,
 	output        VGA_SCALER, // Force VGA scaler
+	output        VGA_DISABLE,
 
 	input  [11:0] HDMI_WIDTH,
 	input  [11:0] HDMI_HEIGHT,
 	output        HDMI_FREEZE,
+	output        HDMI_BLACKOUT,
+	output        HDMI_BOB_DEINT,
 
 `ifdef MISTER_FB
 	// Use framebuffer in DDRAM (USE_FB=1 in qsf)
@@ -187,6 +190,13 @@ assign LED_DISK  = {1'b1, ~vsd_sel & sd_act};
 assign LED_POWER = 0;
 assign BUTTONS = 0;
 
+assign VGA_F1 = 0;
+assign VGA_SCALER = 0;
+assign VGA_DISABLE = 0;
+
+assign HFMI_FREEZER = 0;
+assign HDMI_BALCKOUT = 0;
+
 //////////////////////////////////////////////////////////////////
 
 wire [1:0] ar = status[9:8];
@@ -204,7 +214,7 @@ localparam CONF_STR = {
 	"-;",
 	"O4,Timer,On,Off;",
 	"O5,CPU slow,Off,On;",
-	"O6,Console,Termianl,UART;",
+	"O6,Console,Terminal,UART;",
 	"OAB,Disk bank,0,1,2,3;",
 	"R3,ODT;",
 	"-;",
